@@ -1,0 +1,65 @@
+a) 
+problema absoluto (x:Z) : Z {
+    requiere: {True}
+    asegura: {res es el valor absoluto de x}
+}
+
+b)
+problema maxAbsoluto (x, y : Z) : Z {
+    requiere: {True}
+    asegura: {resultado es el maximo valor absoluto entre x e y}
+}
+
+c) 
+problema maximo3 (x, y, z : Z) : R {
+    requiere: {True}
+    asegura: {resultado es el maximo valor entre x, y, z}
+}
+
+d) 
+problema algunoEs0 (x, y : R) : bool {
+    requiere: {True}
+    asegura: {res=true <-> x = 0 V y = 0}
+}
+
+e) 
+problema ambosSon0 (x, y : R) : bool {
+    requiere: {True}
+    asegura: {res=true <-> x = 0 ∧ y = 0}
+}
+
+f) 
+problema mismoIntervalo (x, y : R) : bool {
+    requiere: {True}
+    asegura: {res=true -> (x <= 3 ∧ y <= 3)}
+    asegura: {res=true -> (x > 3 ∧ x<=7 ∧ y > 3 ∧ y <= 7)}
+    asegura: {res=true -> (x => 7 ∧ y => 7)}
+}
+
+g) 
+problema sumaDistintos (x, y, z : R) : R {
+    requiere: {True}
+    asegura: {res = x+y+z -> x!=y!=z}
+    asegura: {res = x -> y=z!=x}
+    asegura: {res = y -> x=z!=y}
+    asegura: {res = z -> x=y!=z}
+}
+
+h) 
+problema esMultiploDe (x, y : Z): bool {
+    requiere: {x, y > 0}
+    asegura: {res=true -> x mod y = 0}
+}
+
+i)
+problema digitoUnidades (x : Z): Z {
+    requiere: {x > 0}
+    asegura: {res es el último dígito de x}
+}
+
+j)
+problema digitoDecenas (x : Z): Z {
+    requiere: {x > 0}
+    asegura: {res es el dígito de las decenas de x}
+}
+
