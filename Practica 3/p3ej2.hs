@@ -21,10 +21,10 @@ ambosSon0 :: Float -> Float -> Bool
 ambosSon0 x y = (x==0 && y==0)
 
 ambosSon0Pattern :: Float -> Float -> Bool
-algunoEs0Pattern 0 0 = True
-algunoEs0Pattern _ 0 = False
-algunoEs0Pattern 0 _ = False
-algunoEs0Pattern _ _ = False
+ambosSon0Pattern 0 0 = True
+ambosSon0Pattern _ 0 = False
+ambosSon0Pattern 0 _ = False
+ambosSon0Pattern _ _ = False
 
 mismoIntervalo :: Float -> Float -> Bool
 mismoIntervalo x y
