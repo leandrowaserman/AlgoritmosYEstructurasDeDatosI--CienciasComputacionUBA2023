@@ -68,8 +68,8 @@ multiplosDeN n (x:xs)
 
 -- 9 -- 
 
-
--- REVISAR PORQUE NO LO ENTENDÍ -- 
 ordenar :: [Integer] -> [Integer]
 ordenar [] = [] -- Lista vacía, no hay elementos para ordenar
 ordenar (x:xs) = ordenar [y | y <- xs, y <= x] ++ [x] ++ ordenar [y | y <- xs, y > x] -- "y" es una variable temporal que representa cada elemento de la lista xs
+
+-- revisa todos los elementos de xs y si son menores o iguales que x, van al inicio y si son mayores, van al final
