@@ -54,8 +54,9 @@ pares :: [Integer] -> [Integer]
 
 pares [] = []
 pares (x:xs)
-    | mod x 2 == 0 = x:(pares xs)
-    | otherwise = (pares xs)
+    | mod x 2 == 0 = x:pasoRecursivo
+    | otherwise = pasoRecursivo
+    where pasoRecursivo = pares xs
 
 -- 8 -- 
 
@@ -63,9 +64,10 @@ multiplosDeN :: Integer -> [Integer] -> [Integer]
 
 multiplosDeN _ [] = []
 multiplosDeN n (x:xs)
-    | mod x n == 0 = x:(multiplosDeN n xs)
-    | otherwise = (multiplosDeN n xs)
-
+    | n == 0 && x == 0 = [0]
+    | n /= 0 && mod x n == 0 = x:pasoRecursivo
+    | otherwise = pasoRecursivo
+    where pasoRecursivo = multiplosDeN n xs
 -- 9 -- 
 
 ordenar :: [Integer] -> [Integer]

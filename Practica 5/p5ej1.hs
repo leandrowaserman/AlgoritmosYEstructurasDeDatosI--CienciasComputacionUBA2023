@@ -25,6 +25,6 @@ reverso (x:xs) = reverso xs ++ [x] -- El (++) es como un concat
 
 reversoReverse :: [t] -> [t]
 reversoReverse [] = []
-reverso x = reverse x
+reversoReverse x = reverse x
 
 

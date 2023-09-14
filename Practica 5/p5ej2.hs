@@ -55,8 +55,9 @@ quitarTodos :: (Eq t) => t -> [t] -> [t]
 
 quitarTodos _ [] = [] 
 quitarTodos e (x:xs)
-    | e == x = quitarTodos e xs
-    | otherwise = x : quitarTodos e xs 
+    | e == x = pasoRecursivo
+    | otherwise = x : pasoRecursivo
+    where pasoRecursivo = quitarTodos e xs
 
 -- 7 -- 
 
