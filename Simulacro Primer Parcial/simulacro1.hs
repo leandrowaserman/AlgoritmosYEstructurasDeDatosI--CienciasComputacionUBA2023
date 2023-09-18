@@ -9,7 +9,7 @@ tuplasRepetidas (x:y:xs)
 
 invertirTuplas :: [(String, String)] -> [(String, String)] 
 invertirTuplas [] = []
-invertirTuplas ((x,y):xs) = [(y,x)]
+invertirTuplas ((x,y):[]) = [(y,x)]
 invertirTuplas ((x,y):xs) = [(y,x)] ++ invertirTuplas xs 
 
 mismasCoord :: [(String, String)] -> Bool
