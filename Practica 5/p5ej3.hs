@@ -31,13 +31,12 @@ maximoMax (x:xs) = max x (maximoMax xs)
 
 sumarN :: Integer -> [Integer] -> [Integer]
 sumarN _ [] = []
-sumarN n [x] = [x+n]
+sumarN n (x:[]) = [x+n]
 sumarN n (x:xs) = (x+n):(sumarN n xs)
 
 -- 5 -- 
 
 sumarElPrimero :: [Integer] -> [Integer] 
-
 sumarElPrimero [] = []
 sumarElPrimero [x] = [2*x]
 sumarElPrimero (x:xs) = sumarN x (x:xs)
@@ -45,7 +44,6 @@ sumarElPrimero (x:xs) = sumarN x (x:xs)
 -- 6 -- 
 
 sumarElUltimo :: [Integer] -> [Integer] 
-
 sumarElUltimo [] = []
 sumarElUltimo [x] = [2*x]
 sumarElUltimo x = sumarN (last x) x -- LAST DEFINE EL ULTIMO ELEMENTO DE LA LISTA
@@ -53,7 +51,6 @@ sumarElUltimo x = sumarN (last x) x -- LAST DEFINE EL ULTIMO ELEMENTO DE LA LIST
 -- 7 -- 
 
 pares :: [Integer] -> [Integer]
-
 pares [] = []
 pares (x:xs)
     | mod x 2 == 0 = x:pasoRecursivo
@@ -68,13 +65,13 @@ testSuitePares = test [
   "1 solo valor impar" ~: (pares [15]) ~?= [],
   "muchos pares" ~: (pares [-2,4,6,8]) ~?= [-2,4,6,8],
   "mezcla" ~: (pares [2,3,4,5,6,7,8,-1,-3,-2]) ~?= [2,4,6,8,-2]
-    ]
+  ]
 
 correrTestPares = runTestTT testSuitePares
+
 -- 8 -- 
 
 multiplosDeN :: Integer -> [Integer] -> [Integer]
-
 multiplosDeN _ [] = []
 multiplosDeN n (x:xs)
     | n == 0 && x == 0 = [0]
@@ -95,10 +92,11 @@ testSuiteMultiplosDeN = test [
   ]
 
 correrTestMultN = runTestTT testSuiteMultiplosDeN
+
 -- 9 -- 
 
 ordenar :: [Integer] -> [Integer]
-ordenar [] = [] -- Lista vacía, no hay elementos para ordenar
+ordenar [] = []
 ordenar (x:xs) = ordenar [y | y <- xs, y <= x] ++ [x] ++ ordenar [y | y <- xs, y > x] -- "y" es una variable temporal que representa cada elemento de la lista xs
 
 -- revisa todos los elementos de xs y si son menores o iguales que x, van al inicio y si son mayores, van al final
