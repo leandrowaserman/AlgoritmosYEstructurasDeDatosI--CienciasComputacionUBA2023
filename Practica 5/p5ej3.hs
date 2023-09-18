@@ -1,3 +1,5 @@
+import Test.HUnit
+
 -- 1 -- 
 
 sumatoria :: [Integer] -> Integer
@@ -58,6 +60,17 @@ pares (x:xs)
     | otherwise = pasoRecursivo
     where pasoRecursivo = pares xs
 
+testSuitePares = test [
+  "lista vacia" ~: (pares []) ~?= [],
+  "solo impares" ~: (pares [3,5,7]) ~?= [],
+  "1 par" ~: (pares [2,3,5]) ~?= [2],
+  "1 solo valor par" ~: (pares [2]) ~?= [2],
+  "1 solo valor impar" ~: (pares [15]) ~?= [],
+  "muchos pares" ~: (pares [-2,4,6,8]) ~?= [-2,4,6,8],
+  "mezcla" ~: (pares [2,3,4,5,6,7,8,-1,-3,-2]) ~?= [2,4,6,8,-2]
+    ]
+
+correrTestPares = runTestTT testSuitePares
 -- 8 -- 
 
 multiplosDeN :: Integer -> [Integer] -> [Integer]
@@ -68,6 +81,20 @@ multiplosDeN n (x:xs)
     | n /= 0 && mod x n == 0 = x:pasoRecursivo
     | otherwise = pasoRecursivo
     where pasoRecursivo = multiplosDeN n xs
+
+
+testSuiteMultiplosDeN = test [
+  "lista vacia" ~: (multiplosDeN 4 []) ~?= [],
+  "valor 0, mult 1" ~: (multiplosDeN 0 [-1,0,9]) ~?= [0],
+  "valor < 0, mult 0" ~: (multiplosDeN (-3) [20,13,-4]) ~?= [],
+  "valor < 0, mult 1" ~: (multiplosDeN (-8) [9,-16,7]) ~?= [-16],
+  "valor < 0, mult > 1" ~: (multiplosDeN (-7) [0,-14,15]) ~?= [0,-14],
+  "valor > 0, mult 0" ~: (multiplosDeN 5 [4,-7,9]) ~?= [],
+  "valor > 0, mult 1" ~: (multiplosDeN 7 [7,8,-9]) ~?= [7],
+  "valor > 0, mult > 1" ~: (multiplosDeN 11 [-22,10,33]) ~?= [-22,33] 
+  ]
+
+correrTestMultN = runTestTT testSuiteMultiplosDeN
 -- 9 -- 
 
 ordenar :: [Integer] -> [Integer]
