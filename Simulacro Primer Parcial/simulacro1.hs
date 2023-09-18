@@ -7,20 +7,19 @@ tuplasRepetidas (x:y:xs)
     | x==y || tuplasRepetidas (x:xs) = True
     | otherwise = tuplasRepetidas (x:xs) || tuplasRepetidas (y:xs)
 
-
 invertirTuplas :: [(String, String)] -> [(String, String)] 
 invertirTuplas [] = []
-invertirTuplas [(x,y)] = [(y,x)]
+invertirTuplas ((x,y):xs) = [(y,x)]
 invertirTuplas ((x,y):xs) = [(y,x)] ++ invertirTuplas xs 
 
 mismasCoord :: [(String, String)] -> Bool
 mismasCoord [] = False
-mismasCoord [(x,y):xs] = (x==y) || mismasCoord xs
+mismasCoord ((x,y):xs) = (x==y) || mismasCoord xs
 
 relacionesValidas :: [(String, String)] -> Bool
 relacionesValidas [] = True
 relacionesValidas (x:[]) = True
-relacionesValidas (x:xs) = not (tuplasRepetidas (x:xs) || tuplasRepetidas (invertirTuplas (x:xs) || mismasCoord (x:xs)))
+relacionesValidas (x:xs) = not (tuplasRepetidas (x:xs) || tuplasRepetidas (invertirTuplas (x:xs)) || mismasCoord (x:xs))
 
 
 -- 2 -- 
@@ -58,6 +57,7 @@ amigosDe e (x:xs)
 
 
 -- 4 -- 
+
 contarLista :: [t] -> Int
 contarLista [] = 0
 contarLista (x:[]) = 1
@@ -67,17 +67,16 @@ cantidadDeAmigos :: String -> [(String, String)] -> Int
 cantidadDeAmigos _ [] = 0
 cantidadDeAmigos e x = contarLista (amigosDe e x)
 
-{-compararAmigos :: [String] -> String
-compararAmigos [] = "nadie"
-compararAmigos (x:[]) = x
-compararAmigos (x:y:xs)
-    | cantidadDeAmigos x xs >= cantidadDeAmigos y xs = compararAmigos (x:xs)
-    | otherwise = compararAmigos (y:xs)
-
+compararAmigos :: [String] -> [(String, String)] -> String
+compararAmigos _ [] = "nadie"
+compararAmigos [] _ = "nadie"
+compararAmigos (x:[]) xs = x
+compararAmigos (x:y:xs) ys
+    | cantidadDeAmigos x ys >= cantidadDeAmigos y ys = compararAmigos (x:xs) ys
+    | otherwise = compararAmigos (y:xs) ys
 
 
 personaConMasAmigos :: [(String, String)] -> String
 personaConMasAmigos [] = "nadie"
 personaConMasAmigos ((x,y):[]) = x
-personaConMasAmigos xs
-    | cantidadDeAmigos (head personas (xs)) ((x,y):xs) > cantidadDeAmigos y ((x,y):xs) -}
+personaConMasAmigos x = compararAmigos (personas (x)) x
