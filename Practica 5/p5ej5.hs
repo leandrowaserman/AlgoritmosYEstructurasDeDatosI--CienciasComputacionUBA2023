@@ -11,7 +11,7 @@ sumaAcumulada (x:[]) = [x]
 sumaAcumulada x = sumaAcumulada (init x) ++ [sumatoria x] -- init es como el head pero al reves
 
 -- ejercicio extra -- 
-
+esDivisiblePrimo :: Int -> Int
 esDivisiblePrimo x y
     | y/=x && y /= 1 && mod x y == 0 = False
     | x==y || y==1 = True

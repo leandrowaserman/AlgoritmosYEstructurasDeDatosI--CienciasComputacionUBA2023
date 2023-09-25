@@ -66,6 +66,7 @@ eliminarRepetidos (x:xs) = x : eliminarRepetidos (quitarTodos x xs)
 -- 8 -- 
 
 mismosElementos :: (Eq t) => [t] -> [t] -> Bool
+mismosElementos [] [] = True
 mismosElementos [] _ = False
 mismosElementos _ [] = False
 mismosElementos (x:[]) y = pertenece x y 
