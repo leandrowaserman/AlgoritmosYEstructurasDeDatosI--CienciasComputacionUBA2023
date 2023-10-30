@@ -123,16 +123,14 @@ def eliminarRepetidos(palabra:str)->str:
 # EJERCICIO 3
 
 def aprobado (notas:[int])->int:
-    totalDesaprobados:int = 0
     suma:int = 0
     for nota in notas:
         suma += nota
         if nota<4:
-            totalDesaprobados +=1
+            res = 3
+            return res
     promedio:float = suma/(len(notas))
-    if totalDesaprobados != 0 :
-        res = 3
-    elif promedio>=7:
+    if promedio>=7:
         res = 1
     else:
         res= 2
@@ -144,16 +142,14 @@ def aprobado (notas:[int])->int:
 
 # 1
 def listaAlumnos()->[str]:
-    lista:list = []
-    opcion:bool = True
+    lista:[str] = []
     print("Agregue lista de amigos\nPonga listo para terminar su lista\n")
-    while opcion:
+    while True:
         tecla = input()
         if tecla=="listo":
-            opcion=False
-        else:
-            lista.append(tecla)
-    return lista
+            return lista
+        lista.append(tecla)
+
 # 2
 def cargarSube()->[(str,int)]:
     lista:list = []
