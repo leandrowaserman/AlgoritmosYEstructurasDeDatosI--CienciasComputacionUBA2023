@@ -154,15 +154,12 @@ def listaAlumnos()->[str]:
 def cargarSube()->[(str,int)]:
     lista:list = []
     while True:
-#        print("Diga si quiere cargar 'C' o pagar 'D' su sube\nPonga 'X' para terminar su lista\n")
         accion = input("Diga si quiere cargar 'C' o pagar 'D' su sube\nPonga 'X' para terminar su lista\n").lower()
         if accion=="c":
-#            print("¿Cuánto desea cargar?\n")
             cantidad = input("¿Cuánto desea cargar?\n")
             tupla = ("C",cantidad)
             lista.append(tupla)
         elif accion=="d":
- #           print("¿Cuánto desea retirar?\n")
             cantidad = input("¿Cuánto desea retirar?\n")
             tupla = ("D",cantidad)
             lista.append(tupla)
@@ -171,7 +168,7 @@ def cargarSube()->[(str,int)]:
     return lista
 # 3
 def sieteYMedio ()->str:
-    suma = 0.0
+    suma:float = 0.0
     while True:
         if suma>7.5:
             return print("PERDISTE 😥, sumaste: "+ str(suma))
@@ -194,5 +191,12 @@ def sieteYMedio ()->str:
 # EJERCICIO 5
 
 # 1
-
-
+def perteneceACadaUno(lista:[[int]],numero:int)->[bool]:
+    res:[bool] = []
+    for i in lista:
+        if pertenece(i,numero):
+            res.append(True)
+        else:
+            res.append(False)
+    return res
+# 2
