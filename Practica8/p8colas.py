@@ -9,6 +9,12 @@ def duplicarCola (cola:Cola):
         c.put(cola.get)
         return c
 
+def listaACola (lista:list):
+    cola = Cola()
+    for elem in lista:
+        cola.put(elem)
+    return cola
+
 
 # EJERCICIO 13
 def generar_nros_al_azar(n:int,desde:int,hasta:int)->Cola:
@@ -28,8 +34,8 @@ def cantidad_elementos(c:Cola)->int:
     print("Numero de elementos: ", suma)
     return suma
 
-colita = generar_nros_al_azar(10,10,50)
-print(colita.queue)
+#colita = generar_nros_al_azar(10,10,50)
+#print(colita.queue)
 
 # EJERCICIO 15
 def buscar_mayor(c:Cola)->int:
@@ -42,8 +48,8 @@ def buscar_mayor(c:Cola)->int:
         if valor2 > valor:
             valor = valor2
     return valor
-print (buscar_mayor(colita))
-print(colita.queue)
+#print (buscar_mayor(colita))
+#print(colita.queue)
 
 # EJERCICIO 16
 
@@ -75,6 +81,18 @@ def jugar_carton_de_bingo(carton:list[int],bolillero:Cola[int])->int:
 
 
 # EJERCICIO 17
-
+def n_pacientes_urgentes(c:Cola[(int,str,str)])->int:
+    lista:list[(int,str,str)] = []
+    suma:int=0
+    while not c.empty():
+        lista.append(c.get())
+    for paciente in lista:
+        if paciente[0]<4 and paciente[0]>0:
+            suma+=1
+        c.put(paciente)
+    return suma
+    
+listaPaciente = listaACola([(1,"das",""),(4,"",""),(2,"",""),(5,"","")])
+print(n_pacientes_urgentes(listaPaciente))
 
 # EJERCICIO 18

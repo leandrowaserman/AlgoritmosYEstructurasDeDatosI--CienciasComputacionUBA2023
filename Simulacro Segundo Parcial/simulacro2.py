@@ -16,11 +16,9 @@ def elementos_exclusivos(s:[int],t:[int])->[int]:
     return res
 # EJERCICIO 3
 def contar_traducciones_iguales (ing:dict,ale:dict)->int:
-    keysIng = ing.keys()
-    keysAle = ale.keys()
     suma = 0
-    for key in keysIng:
-        if key in keysAle:
+    for key in ing.keys():
+        if key in ale.keys():
             if ing[key] == ale[key]:
                 suma+=1
     return suma
@@ -32,5 +30,7 @@ def convertir_a_diccionario (lista:[int])->dict:
             diccionario[numero]= lista.count(numero)
     return diccionario
     
+texto = ",,,,rrrtttggg....pera....rrr"
+print(texto.strip(",.grt"))
 
     
